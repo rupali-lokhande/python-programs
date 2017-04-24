@@ -19,3 +19,30 @@ def singleNonDuplicate(nums):
                 else:
                     high = mid-1
         return nums[low]
+        
+        
+#find anargram number in array
+
+def anargram_check(s1,s2):
+    s1 = s1.replace(" ",'').lower()
+    s2 = s2.replace(' ','').lower()
+    counter = {}
+    if len(s1) != len(s2):
+        return False
+    for letters in s1:
+        if letters in counter:
+            counter[letters] += 1
+        else:
+            counter[letters] = 1   #dict_keys(['g'])
+            print(counter.keys())  #dict_keys(['g', 'o'])
+                                   #dict_keys(['d', 'g', 'o'])
+
+    for letters in s2:
+        if letters in counter:
+            counter[letters] -= 1
+            print(counter.values())
+        else:
+            counter[letters] = 1
+    if counter[letters] != 0:
+        return False
+    return True
