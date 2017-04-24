@@ -1,5 +1,5 @@
 # Arrays
-''' find only one duplicate in an sorted array
+''' find only one duplicate in an sorted array'''
 def singleNonDuplicate(nums):
         """
         :type nums: List[int]
