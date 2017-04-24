@@ -1,0 +1,21 @@
+# Arrays
+''' find only one duplicate in an sorted array
+def singleNonDuplicate(nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums: return 0
+        low,high = 0, len(nums) - 1
+        while(low < high):
+            mid = low + (high - low)// 2
+            if nums[mid] != nums[mid+1] and nums[mid] != nums[mid-1]:
+                return nums[mid]
+            if(nums[mid] == nums[mid+1] and mid % 2 == 0):
+                   low = mid+2
+            else:
+                if(nums[mid] == nums[mid-1] and mid % 2 == 1):
+                   low = mid+1
+                else:
+                    high = mid-1
+        return nums[low]
