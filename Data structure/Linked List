@@ -1,0 +1,66 @@
+#Mearge two linked list
+
+
+def MergeLists(headA, headB):
+    if (headA is None):
+        return headB
+    elif (headB is None):
+        return headA
+
+    if (headA.value <= headB.value):
+        result = headA
+        result.next = MergeLists(headA.next, headB)
+    else:
+        result = headB
+        result.next = MergeLists(headA, headB.next)
+
+    print(result.value)
+MergeLists(node1,node11)
+
+
+# claculate node distance that is nth node from last node if n is given
+
+def cal_node(n,node):
+    lpointer = node
+    rpointer = node
+    for i in range(n): # this will move rpointer n step ahead n=2
+        if rpointer.nextnode == None:
+            raise LookupError("Error : n is largest than linked list")
+        else:
+            rpointer = rpointer.nextnode
+
+    while rpointer.nextnode != None:
+        lpointer = lpointer.nextnode
+        rpointer = rpointer.nextnode
+    return lpointer
+    
+    
+# To check given linked list is palandrom or not
+
+def palan_check(head):
+    slow = head
+    fast = head
+    while fast != None and fast.next != None:
+        slow = slow.next
+        fast = fast.next.next
+    print(slow.value)
+    p = slow
+    last = None
+
+    # reversing linked list
+    while p:
+        current = p
+        p = p.next
+        current.next = last
+        last = current
+    print(last.value)
+    p = last
+    p1,p2 = last,head
+    while p2 != None:
+        if p1.value != p2.value:
+            return False
+        else:
+            p1 = p1.next
+            p2 = p2.next
+    return True
+print(palan_check(node1))
